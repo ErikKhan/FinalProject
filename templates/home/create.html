@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block createactive %} active {% endblock createactive %}
+
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="text-center">{{ controller }}</h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <input type="submit" value="{{ controller }}" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

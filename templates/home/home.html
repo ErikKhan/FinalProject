@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block homeactive %} active {% endblock homeactive %}
+
+{% block body %}
+
+<div class="container-fluid">
+  <div class="row">
+  
+      <img class="pic" src="static/img/tesla1.png" class="img-fluid" alt="Responsive image">
+      <img class="pic" src="static/img/wheel.jpg" class="img-fluid" alt="Responsive image">
+      <img class="pic" src="static/img/wheels.jpg" class="img-fluid" alt="Responsive image">
+      <img class="pic" src="static/img/bmw1.jpg" class="img-fluid" alt="Responsive image">
+      <img class="pic" src="static/img/audi.jpg" class="img-fluid" alt="Responsive image">
+      <img class="pic" src="static/img/j.jpg" class="img-fluid" alt="Responsive image">
+      <img class="pic" src="static/img/honda1.jpg" class="img-fluid" alt="Responsive image">
+  </div>
+</div>
+  <br>
+
+  <div class="container">
+    <h1>Below is the list of all the Rides</h1>
+<div id="demo" class="carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+
+       {% for i in range %}
+      <li data-target="#demo" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+    <!--Slideshow starts here -->
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+       
+
+
+        {% for i in car %}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 18rem;">
+            <img src='{{i.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+              <p class="card-text"><strong>Model: </strong>{{i.model}}</p>
+              <p class="card-text"><strong>HorsePower: </strong>{{i.horsepower}}</p>
+              <p class="card-text"><strong>Price: </strong>${{i.price}}</p>            
+              
+              <p class="card-text">{{i.description}}</p>
+              <a href="/details/{{i.id}}"  class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+      </div><div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+
+
+</div>
+</div>
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev " href="#demo" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
+       <span class="sr-only">Previous</span>
+     </a>
+     <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="sr-only">Next</span>
+     </a>
+      
+       </div>
+
+  
+   
+
+	{% endblock %}
